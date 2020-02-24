@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5db2b394-d289-4f32-a274-4af56df914ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,11 +24,22 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YGGHLViZTYfv7xBuZnjG0vFVSU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -31,6 +51,12 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.darbots.corebotlib.localization" />
+      <recent name="org.darbots.corebotlib.calculations.valueholders" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -46,13 +72,31 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="91" key="#Project_Structure" timestamp="1582561750353">
+    <state x="320" y="91" key="#Project_Structure" timestamp="1582563515202">
       <screen x="0" y="23" width="1440" height="806" />
     </state>
-    <state x="320" y="91" key="#Project_Structure/0.23.1440.806@0.23.1440.806" timestamp="1582561750353" />
-    <state x="399" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1582561497932">
-      <screen x="0" y="23" width="1440" height="806" />
+    <state x="320" y="91" key="#Project_Structure/0.23.1440.806@0.23.1440.806" timestamp="1582563515202" />
+    <state x="533" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1582569049028">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="533" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1440.806@0.23.1440.806" timestamp="1582564079972" />
+    <state x="533" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1440.808@0.23.1440.808" timestamp="1582569049028" />
+    <state x="395" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582572661261">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="395" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.808@0.23.1440.808" timestamp="1582572661261" />
+    <state x="399" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1582582481745">
+      <screen x="0" y="23" width="1440" height="808" />
     </state>
     <state x="399" y="258" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1582561497932" />
+    <state x="399" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1582582481745" />
+    <state x="463" y="160" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1582569073128">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="463" y="160" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1440.808@0.23.1440.808" timestamp="1582569073128" />
+    <state x="312" y="23" width="816" height="806" key="find.popup" timestamp="1582563537827">
+      <screen x="0" y="23" width="1440" height="806" />
+    </state>
+    <state x="312" y="23" width="816" height="806" key="find.popup/0.23.1440.806@0.23.1440.806" timestamp="1582563537827" />
   </component>
 </project>
