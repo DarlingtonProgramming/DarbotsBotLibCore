@@ -26,6 +26,9 @@ public class Vector2D extends Point2D implements Serializable,Cloneable {
     public Vector2D(Pose2D pose2D){
         this(pose2D,new Angle(pose2D.headingNormalizedAngle));
     }
+    public boolean equals(Vector2D vector2D){
+        return super.equals(vector2D) && this.headingAngle.equals(vector2D.headingAngle);
+    }
     public Pose2D toPose2D(){
         return new Pose2D(this);
     }

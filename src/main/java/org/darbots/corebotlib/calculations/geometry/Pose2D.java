@@ -25,6 +25,9 @@ public class Pose2D extends Point2D implements Serializable,Cloneable {
     public Pose2D(Vector2D vec2D){
         this(vec2D,new NormalizedAngle(vec2D.headingAngle));
     }
+    public boolean equals(Pose2D pose2D){
+        return super.equals(pose2D) && this.headingNormalizedAngle.equals(pose2D.headingNormalizedAngle);
+    }
     public Pose2D clone(){
         return new Pose2D(this);
     }

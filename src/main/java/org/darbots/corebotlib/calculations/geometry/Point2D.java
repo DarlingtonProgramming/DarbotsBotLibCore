@@ -43,6 +43,9 @@ public class Point2D implements Serializable,Comparable<Point2D>,Cloneable {
             return 0;
         }
     }
+    public boolean equals(Point2D point){
+        return this.X == point.X && this.Y == point.Y;
+    }
     public static class XComparator implements Comparator<Point2D>{
         @Override
         public int compare(Point2D o1, Point2D o2) {
