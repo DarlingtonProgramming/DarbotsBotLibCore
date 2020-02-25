@@ -1,5 +1,6 @@
 package org.darbots.corebotlib.control;
 
+import org.darbots.corebotlib.calculations.Range;
 import org.darbots.corebotlib.util.TimeCounter;
 
 public class PIDFController {
@@ -25,14 +26,16 @@ public class PIDFController {
         this.pidCoefficients = controller.pidCoefficients;
         this.timeCounter = new TimeCounter();
     }
-    public double update(double currentPosition){
+    public double update(double currentPosition, double powerCap){
         if(this.pidCoefficients instanceof PIDFCoefficients){
-            return this.update(currentPosition,((PIDFCoefficients) this.pidCoefficients).Kf);
+            return this.update(currentPosition, powerCap, ((PIDFCoefficients) this.pidCoefficients).Kf);
         }else{
-            return this.update(currentPosition,0);
+            return this.update(currentPosition, powerCap, 0);
         }
     }
-    public double update(double currentPosition, double PIDFOverride){
+    public double update(double currentPosition, double powerCap, double PIDFOverride){
+        powerCap = Math.abs(powerCap);
+
         double deltaTime = this.timeCounter.seconds();
         double error = this.targetPosition - currentPosition;
         double integratedError = this.integratedError + error * deltaTime;
@@ -42,14 +45,18 @@ public class PIDFController {
         double PIDFPower = PIDPower + PIDFOverride;
 
         this.lastError = error;
-        this.integratedError = integratedError;
+        if(Math.abs(PIDFPower) >= powerCap) {
+            //Maximum Power Reached, Clip power, and don't add any more integral.
+            PIDFPower = Range.clip(PIDFPower,-powerCap,powerCap);
+        }else{
+            this.integratedError = integratedError;
+        }
         this.timeCounter.reset();
 
         return PIDFPower;
     }
     public void targetReset(){
         this.lastError = 0;
-        this.integratedError = 0;
         this.timeCounter.reset();
     }
 }

@@ -1,5 +1,6 @@
 package org.darbots.corebotlib.calculations.valueholders;
 
+import org.darbots.corebotlib.calculations.units.AngleUnit;
 import org.darbots.corebotlib.calculations.units.DistanceUnit;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.Serializable;
 public class Distance implements Serializable,Cloneable {
     public static final long serialVersionUID = 0L;
     public double distance = 0;
-    public DistanceUnit distanceUnit;
+    private DistanceUnit distanceUnit;
     public Distance(){
         this(0,DistanceUnit.CM);
     }
@@ -21,12 +22,22 @@ public class Distance implements Serializable,Cloneable {
         this.distance = dist.distance;
         this.distanceUnit = dist.distanceUnit;
     }
+    public DistanceUnit getDistanceUnit(){
+        if(this.distanceUnit == null){
+            return DistanceUnit.CM;
+        }else{
+            return this.distanceUnit;
+        }
+    }
+    public void setDistanceUnit(DistanceUnit unit){
+        this.distanceUnit = unit;
+    }
     public Distance clone(){
         return new Distance(this);
     }
     private void writeObject(java.io.ObjectOutputStream out)
             throws IOException{
-        DistanceUnit unit = this.distanceUnit == null ? DistanceUnit.CM : this.distanceUnit;
+        DistanceUnit unit = this.getDistanceUnit();
         double distCM = unit.toDistanceUnit(DistanceUnit.CM,this.distance);
         out.writeDouble(distCM);
     }
@@ -42,7 +53,7 @@ public class Distance implements Serializable,Cloneable {
         this.distanceUnit = DistanceUnit.CM;
     }
     public double asUnit(DistanceUnit distanceUnit){
-        return distanceUnit.fromDistanceUnit(this.distanceUnit,this.distance);
+        return distanceUnit.fromDistanceUnit(this.getDistanceUnit(),this.distance);
     }
     public double asMM(){
         return this.asUnit(DistanceUnit.MM);

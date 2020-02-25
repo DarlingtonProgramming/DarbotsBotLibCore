@@ -110,6 +110,12 @@ public class Angle implements Serializable,Cloneable {
                 angleUnit
         );
     }
+    public Angle abs(){
+        return new Angle(
+                Math.abs(this.angle),
+                this.getAngleUnit()
+        );
+    }
     public boolean equals(Angle angle){
         return this.asRadian() == angle.asRadian();
     }

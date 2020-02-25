@@ -71,4 +71,10 @@ public class NormalizedAngle extends Angle {
                 angleUnit
         );
     }
+    public NormalizedAngle abs(){
+        return new NormalizedAngle(
+                Math.abs(this.angle),
+                this.getAngleUnit()
+        );
+    }
 }

@@ -10,19 +10,7 @@ import org.darbots.corebotlib.calculations.geometry.Vector2D;
 public final class BotMath {
     public static final double INFINITELY_SMALL = 1e-8;
     public static final Point2D ORIGIN_POINT = new Point2D(0,0);
-    public static int map(int number, int originalMin, int originalMax, int newMin, int newMax){
-        int oldDelta = originalMax - originalMin;
-        int newDelta = newMax - newMin;
-        float startDelta = (number - originalMin);
-        int scaled = newMin + Math.round(startDelta / oldDelta * newDelta);
-        return scaled;
-    }
-    public static float map(float number, float originalMin, float originalMax, float newMin, float newMax){
-        return newMin + ((number-originalMin) / (originalMax - originalMin) * (newMax - newMin));
-    }
-    public static double map(double number, double originalMin, double originalMax, double newMin, double newMax){
-        return newMin + ((number-originalMin) / (originalMax - originalMin) * (newMax - newMin));
-    }
+
     public static Point2D rotatePointAroundFixedPoint(Point2D fixedPoint, Point2D rotatePoint, Angle counterClockwiseAngle){
         double angleRad = counterClockwiseAngle.asRadian();
         double cosAng = Math.cos(angleRad), sinAng = Math.sin(angleRad);
