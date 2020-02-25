@@ -10,7 +10,7 @@ import org.darbots.corebotlib.localization.Vector2D;
 import java.awt.*;
 
 public final class BotMath {
-    public static final double VERY_SMALL = 1e-8;
+    public static final double INFINITELY_SMALL = 1e-8;
     public static final Point2D ORIGIN_POINT = new Point2D(0,0);
     public static int map(int number, int originalMin, int originalMax, int newMin, int newMax){
         int oldDelta = originalMax - originalMin;

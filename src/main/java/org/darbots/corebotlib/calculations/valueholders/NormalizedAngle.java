@@ -28,7 +28,7 @@ public class NormalizedAngle extends Angle {
         this.angle = unit.normalize(angle);
     }
     public NormalizedAngle negative(){
-        return new NormalizedAngle(-this.angle,this.angleUnit);
+        return new NormalizedAngle(-this.angle,this.getAngleUnit());
     }
     public NormalizedAngle toRadian(){
         return new NormalizedAngle(this.asRadian(),AngleUnit.RADIAN);
@@ -70,8 +70,5 @@ public class NormalizedAngle extends Angle {
                 this.angle % ang.asUnit(angleUnit),
                 angleUnit
         );
-    }
-    public NormalizedAngle unaryMinsu(){
-        return this.negative();
     }
 }

@@ -53,7 +53,7 @@ public class Angle implements Serializable,Cloneable {
         this.angle = angleRad;
     }
     public Angle negative(){
-        return new Angle(-this.angle,this.angleUnit);
+        return new Angle(-this.angle,this.getAngleUnit());
     }
     private void readObjectNoData()
             throws ObjectStreamException {
@@ -96,7 +96,7 @@ public class Angle implements Serializable,Cloneable {
                 angleUnit
         );
     }
-    public Angle div(Angle ang){
+    Angle div(Angle ang){
         AngleUnit angleUnit = this.getAngleUnit();
         return new Angle(
                 this.angle / ang.asUnit(angleUnit),
@@ -110,7 +110,11 @@ public class Angle implements Serializable,Cloneable {
                 angleUnit
         );
     }
-    public Angle unaryMinsu(){
-        return this.negative();
+    public boolean equals(Angle angle){
+        return this.asRadian() == angle.asRadian();
+    }
+    public NormalizedAngle getSquaredAngle(){
+        AngleUnit currentAngleUnit = this.getAngleUnit();
+        return new NormalizedAngle(currentAngleUnit.toSquareAngle(currentAngleUnit.normalize(this.angle)),currentAngleUnit);
     }
 }

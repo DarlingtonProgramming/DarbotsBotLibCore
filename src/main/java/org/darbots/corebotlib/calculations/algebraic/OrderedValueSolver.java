@@ -1,7 +1,7 @@
 package org.darbots.corebotlib.calculations.algebraic;
 
 public class OrderedValueSolver {
-    public static final double INFINITELY_SMALL = 1.0e-8;
+    public static final double INFINITELY_SMALL = 1.0e-6;
     public static final double RESULT_NO_SOLUTION = -1.0e8;
     public static double solve(OrderedValueProvider valueProvider, double errorMargin, double independentVarMin, double independentVarMax, double desiredValue){
         if((valueProvider.orderIncremental() && independentVarMax > independentVarMin) || ((!valueProvider.orderIncremental()) && independentVarMax < independentVarMin)){

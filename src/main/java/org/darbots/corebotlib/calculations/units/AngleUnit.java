@@ -31,4 +31,17 @@ public enum AngleUnit {
     public float normalize(float angle){
         return ((float) normalize((double) angle));
     }
+    public double toSquareAngle(double normalizedAngle){
+        double quarterRange = this.halfRange / 2.0;
+        double eighthRange = quarterRange / 2.0;
+        if(normalizedAngle <= (-halfRange + eighthRange) || normalizedAngle > (halfRange - eighthRange)){
+            return -halfRange;
+        }else if(normalizedAngle <= (halfRange - eighthRange) && normalizedAngle > (eighthRange)){
+            return quarterRange;
+        }else if(normalizedAngle <= (eighthRange) && normalizedAngle > (-eighthRange)){
+            return 0;
+        }else{ //normalizedAngle <= (-eighthRange) && normalizedAngle > (-halfRange + eighthRange)
+            return -quarterRange;
+        }
+    }
 }

@@ -41,4 +41,25 @@ public class Distance implements Serializable,Cloneable {
         this.distance = 0;
         this.distanceUnit = DistanceUnit.CM;
     }
+    public double asUnit(DistanceUnit distanceUnit){
+        return distanceUnit.fromDistanceUnit(this.distanceUnit,this.distance);
+    }
+    public double asMM(){
+        return this.asUnit(DistanceUnit.MM);
+    }
+    public double asCM(){
+        return this.asUnit(DistanceUnit.CM);
+    }
+    public double asM(){
+        return this.asUnit(DistanceUnit.M);
+    }
+    public double asINCH(){
+        return this.asUnit(DistanceUnit.INCH);
+    }
+    public double asFeet(){
+        return this.asUnit(DistanceUnit.FEET);
+    }
+    public boolean equals(Distance distance){
+        return this.asCM() == distance.asCM();
+    }
 }
