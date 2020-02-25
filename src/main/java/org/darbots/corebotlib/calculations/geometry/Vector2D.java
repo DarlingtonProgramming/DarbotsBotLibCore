@@ -1,4 +1,4 @@
-package org.darbots.corebotlib.localization;
+package org.darbots.corebotlib.calculations.geometry;
 
 import org.darbots.corebotlib.calculations.valueholders.Angle;
 import org.darbots.corebotlib.calculations.valueholders.NormalizedAngle;

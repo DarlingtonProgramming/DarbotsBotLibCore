@@ -1,6 +1,5 @@
-package org.darbots.corebotlib.localization;
+package org.darbots.corebotlib.calculations.geometry;
 
-import java.awt.*;
 import java.io.Serializable;
 import java.util.Comparator;
 

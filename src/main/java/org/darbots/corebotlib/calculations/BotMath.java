@@ -1,13 +1,11 @@
-package org.darbots.corebotlib.calculations.algebraic;
+package org.darbots.corebotlib.calculations;
 
 import org.darbots.corebotlib.calculations.units.AngleUnit;
 import org.darbots.corebotlib.calculations.valueholders.Angle;
 import org.darbots.corebotlib.calculations.valueholders.NormalizedAngle;
-import org.darbots.corebotlib.localization.Point2D;
-import org.darbots.corebotlib.localization.Pose2D;
-import org.darbots.corebotlib.localization.Vector2D;
-
-import java.awt.*;
+import org.darbots.corebotlib.calculations.geometry.Point2D;
+import org.darbots.corebotlib.calculations.geometry.Pose2D;
+import org.darbots.corebotlib.calculations.geometry.Vector2D;
 
 public final class BotMath {
     public static final double INFINITELY_SMALL = 1e-8;
