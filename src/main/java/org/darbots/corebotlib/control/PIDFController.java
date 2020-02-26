@@ -33,7 +33,7 @@ public class PIDFController {
             return this.update(currentPosition, powerCap, 0);
         }
     }
-    public double update(double currentPosition, double powerCap, double PIDFOverride){
+    public double update(double currentPosition, double powerCap, double FOverride){
         powerCap = Math.abs(powerCap);
 
         double deltaTime = this.timeCounter.seconds();
@@ -42,7 +42,7 @@ public class PIDFController {
         double derivativeError = (error - this.lastError) / deltaTime;
 
         double PIDPower = (this.pidCoefficients.Kp * error) + (this.pidCoefficients.Ki * integratedError) + (this.pidCoefficients.Kd * derivativeError);
-        double PIDFPower = PIDPower + PIDFOverride;
+        double PIDFPower = PIDPower + FOverride;
 
         this.lastError = error;
         if(Math.abs(PIDFPower) >= powerCap) {

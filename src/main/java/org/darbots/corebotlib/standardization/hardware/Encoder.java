@@ -5,7 +5,7 @@ import org.darbots.corebotlib.standardization.hardware.typedef.instances.Encoder
 
 public interface Encoder {
     EncoderTypeInstance getEncoderType();
-    int getTick();
+    int getCurrentTick();
     Angle getCurrentAngularSpeed();
-    double getTicksPerSecond();
+    double getCurrentTicksPerSecond();
 }

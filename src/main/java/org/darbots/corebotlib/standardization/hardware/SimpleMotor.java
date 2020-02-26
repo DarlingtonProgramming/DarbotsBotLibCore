@@ -1,8 +1,11 @@
 package org.darbots.corebotlib.standardization.hardware;
 
 import org.darbots.corebotlib.calculations.valueholders.Angle;
+import org.darbots.corebotlib.standardization.hardware.typedef.instances.MotorTypeInstance;
 
 public interface SimpleMotor {
+    MotorTypeInstance getMotorType();
+
     /**
      * Set current operation speed of the motor.
      * @param power fraction and direction of speed the motor should operate on, with range of [-1, 1]
@@ -11,7 +14,7 @@ public interface SimpleMotor {
 
     /**
      * Get current operation speed of the motor
-     * @return Power fraction and direction of speed the motor should operate on, with range of [-1,1]
+     * @return Power fraction and direction of speed the motor should operate on, with range of [-1, 1]
      */
     double getPower();
 
@@ -26,4 +29,10 @@ public interface SimpleMotor {
      * @param reversed true if you want the direciton of the motor reversed
      */
     void setDirectionReversed(boolean reversed);
+
+    /**
+     * Returns if the motor controller is applying an actual power not equal to 0
+     * @return true if motor is running, false if the motor is stopped.
+     */
+    boolean isBusy();
 }
