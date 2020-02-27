@@ -10,13 +10,10 @@ import org.darbots.corebotlib.hardware.DataReceiver;
 import org.darbots.corebotlib.hardware.DataReceiverContainer;
 import org.darbots.corebotlib.hardware.Gyro;
 
-public abstract class LocalizeMethodContainer implements DataReceiverContainer<LocalizeMethod> {
+public abstract class LocalizeMethodContainer implements DataReceiverContainer<LocalizeMethod>, Localizer {
     private LocalizeMethod receiver = null;
     private Gyro headingProvider = null;
     private double headingProviderReadingAtZero;
-
-    public abstract Pose2D getPoseEstimate();
-    public abstract void setPoseEstimate(Pose2D pose);
 
     @Override
     public LocalizeMethod getReceiver() {
@@ -29,10 +26,12 @@ public abstract class LocalizeMethodContainer implements DataReceiverContainer<L
         this.receiver.setContainer(this);
     }
 
+    @Override
     public Gyro getHeadingProvider(){
         return this.headingProvider;
     }
 
+    @Override
     public void setHeadingProvider(Gyro provider){
         if(provider instanceof AsyncDevice){
             ((AsyncDevice) provider).update();

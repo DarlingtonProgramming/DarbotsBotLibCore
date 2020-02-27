@@ -33,7 +33,7 @@ public class AsyncLocalizer extends LocalizeMethodContainer implements AsyncDevi
 
     @Override
     public Pose2D getPoseEstimate() {
-        return this.currentPose;
+        return new Pose2D(this.currentPose);
     }
 
     @Override

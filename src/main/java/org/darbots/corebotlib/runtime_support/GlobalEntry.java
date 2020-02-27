@@ -1,4 +1,7 @@
-package org.darbots.corebotlib;
+package org.darbots.corebotlib.runtime_support;
+
+import org.darbots.corebotlib.runtime_support.threadmanager.ProgramCycleThreadRegister;
+import org.darbots.corebotlib.runtime_support.threadmanager.RobotCycleThreadRegister;
 
 public class GlobalEntry {
     /**
@@ -19,7 +22,7 @@ public class GlobalEntry {
      * This function should be called when a specific program for the robot stops
      */
     public static void stopLifeCycle(){
-        LifeCycleThreadRegister.terminateAllDestroyable();
+        ProgramCycleThreadRegister.terminateAllDestroyable();
     }
 
     /**
@@ -27,5 +30,6 @@ public class GlobalEntry {
      */
     public static void terminateRobot(){
         ControlLoopUtil.clearRegisteredCallables();
+        RobotCycleThreadRegister.terminateAllDestroyable();
     }
 }

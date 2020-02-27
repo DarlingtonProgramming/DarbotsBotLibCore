@@ -1,4 +1,4 @@
-package org.darbots.corebotlib;
+package org.darbots.corebotlib.runtime_support;
 
 import java.util.LinkedList;
 import java.util.concurrent.Callable;

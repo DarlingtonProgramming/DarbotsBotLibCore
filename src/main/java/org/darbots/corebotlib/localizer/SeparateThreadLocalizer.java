@@ -1,7 +1,8 @@
 package org.darbots.corebotlib.localizer;
 
-import org.darbots.corebotlib.ControlLoopUtil;
-import org.darbots.corebotlib.LifeCycleThreadRegister;
+import org.darbots.corebotlib.runtime_support.ControlLoopUtil;
+import org.darbots.corebotlib.runtime_support.threadmanager.GlobalThreadRegister;
+import org.darbots.corebotlib.runtime_support.threadmanager.ProgramCycleThreadRegister;
 import org.darbots.corebotlib.calculations.BotMath;
 import org.darbots.corebotlib.calculations.geometry.Pose2D;
 import org.darbots.corebotlib.calculations.units.AngleUnit;
@@ -11,7 +12,7 @@ import org.darbots.corebotlib.hardware.typedef.Destroyable;
 import org.darbots.corebotlib.util.ElapsedTimer;
 
 public class SeparateThreadLocalizer extends LocalizeMethodContainer implements Destroyable {
-    public class SeparateThreadLocalizerRunnable implements Runnable{
+    private class SeparateThreadLocalizerRunnable implements Runnable{
         public volatile boolean runningCommand = false;
         public volatile boolean runningFlag = false;
 
@@ -46,9 +47,6 @@ public class SeparateThreadLocalizer extends LocalizeMethodContainer implements 
         }
 
         public void stop(){
-            if(!this.runningCommand){
-                return;
-            }
             this.runningCommand = false;
         }
     }
@@ -58,21 +56,20 @@ public class SeparateThreadLocalizer extends LocalizeMethodContainer implements 
 
     public SeparateThreadLocalizer(LocalizeMethod method, Pose2D initialPose){
         this.setReceiver(method);
-        this.currentPose = new Pose2D(0,0,new NormalizedAngle(0,AngleUnit.RADIAN));
+        this.__setup();
         this.setPoseEstimate(initialPose);
-        this.__setupRunnableTracking();
     }
 
     public SeparateThreadLocalizer(LocalizeMethodContainer container){
         this.setReceiver(container.getReceiver());
-        this.currentPose = new Pose2D(0,0,new NormalizedAngle(0,AngleUnit.RADIAN));
+        this.__setup();
         this.setPoseEstimate(container.getPoseEstimate());
-        this.__setupRunnableTracking();
     }
 
-    protected void __setupRunnableTracking(){
+    protected void __setup(){
+        this.currentPose = new Pose2D(0,0,new NormalizedAngle(0,AngleUnit.RADIAN));
         this.m_Runnable = new SeparateThreadLocalizerRunnable();
-        LifeCycleThreadRegister.registerDestroyable(this);
+        GlobalThreadRegister.registerDestroyable(this);
     }
 
     @Override
