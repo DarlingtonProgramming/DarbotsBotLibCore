@@ -1,8 +1,8 @@
 package org.darbots.corebotlib.util;
 
-public class TimeCounter {
+public class ElapsedTimer {
     public long startMilliSeconds;
-    public TimeCounter(){
+    public ElapsedTimer(){
         this.startMilliSeconds = System.currentTimeMillis();
     }
     public void reset(){

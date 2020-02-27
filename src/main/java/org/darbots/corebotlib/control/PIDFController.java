@@ -1,14 +1,14 @@
 package org.darbots.corebotlib.control;
 
 import org.darbots.corebotlib.calculations.Range;
-import org.darbots.corebotlib.util.TimeCounter;
+import org.darbots.corebotlib.util.ElapsedTimer;
 
 public class PIDFController {
     public double targetPosition;
     public double lastError;
     public double integratedError;
     public PIDCoefficients pidCoefficients;
-    private TimeCounter timeCounter;
+    private ElapsedTimer timeCounter;
     public PIDFController(PIDCoefficients coefficients){
         this(0,coefficients);
     }
@@ -17,14 +17,14 @@ public class PIDFController {
         this.lastError = 0;
         this.integratedError = 0;
         this.pidCoefficients = coefficients;
-        this.timeCounter = new TimeCounter();
+        this.timeCounter = new ElapsedTimer();
     }
     public PIDFController(PIDFController controller){
         this.targetPosition = controller.targetPosition;
         this.lastError = controller.lastError;
         this.integratedError = controller.integratedError;
         this.pidCoefficients = controller.pidCoefficients;
-        this.timeCounter = new TimeCounter();
+        this.timeCounter = new ElapsedTimer();
     }
     public double update(double currentPosition, double powerCap){
         if(this.pidCoefficients instanceof PIDFCoefficients){

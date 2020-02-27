@@ -26,6 +26,6 @@ public class GlobalEntry {
      * This function should be embedded into your native robot controller software, as long as the entire hardware being controlled in detached, or the app is trying to quit, this should be called.
      */
     public static void terminateRobot(){
-
+        ControlLoopUtil.clearRegisteredCallables();
     }
 }

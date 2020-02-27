@@ -1,8 +1,8 @@
 package org.darbots.corebotlib.hardware;
 
-public interface DataReceiverContainer{
-    DataReceiver getReceiver();
-    void setReceiver(DataReceiver receiver);
+public interface DataReceiverContainer<E extends DataReceiver>{
+    E getReceiver();
+    void setReceiver(E receiver);
     void start();
     void stop();
 }
