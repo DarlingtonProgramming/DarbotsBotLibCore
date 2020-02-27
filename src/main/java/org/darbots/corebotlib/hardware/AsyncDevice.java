@@ -1,4 +1,4 @@
-package org.darbots.corebotlib.standardization;
+package org.darbots.corebotlib.hardware;
 
 public interface AsyncDevice {
     boolean isBusy();

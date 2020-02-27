@@ -1,6 +1,6 @@
-package org.darbots.corebotlib.standardization.hardware.typedef.instances;
+package org.darbots.corebotlib.hardware.typedef.instances;
 
-import org.darbots.corebotlib.standardization.hardware.typedef.annotations.CRServoType;
+import org.darbots.corebotlib.hardware.typedef.annotations.CRServoType;
 
 public class CRServoTypeInstance extends MotorTypeInstance {
     private double pwmMicroSecMin;

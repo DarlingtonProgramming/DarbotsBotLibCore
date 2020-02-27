@@ -1,6 +1,6 @@
-package org.darbots.corebotlib.standardization.hardware.typedef.instances;
+package org.darbots.corebotlib.hardware.typedef.instances;
 
-import org.darbots.corebotlib.standardization.hardware.typedef.annotations.EncoderType;
+import org.darbots.corebotlib.hardware.typedef.annotations.EncoderType;
 
 public class EncoderTypeInstance {
     private String name;

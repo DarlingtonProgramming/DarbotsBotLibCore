@@ -1,7 +1,6 @@
-package org.darbots.corebotlib.standardization.hardware;
+package org.darbots.corebotlib.hardware;
 
-import org.darbots.corebotlib.calculations.valueholders.Angle;
-import org.darbots.corebotlib.standardization.hardware.typedef.instances.MotorTypeInstance;
+import org.darbots.corebotlib.hardware.typedef.instances.MotorTypeInstance;
 
 public interface SimpleMotor {
     MotorTypeInstance getMotorType();

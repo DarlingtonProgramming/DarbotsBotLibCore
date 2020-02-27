@@ -1,8 +1,6 @@
-package org.darbots.corebotlib.standardization.hardware.typedef.instances;
+package org.darbots.corebotlib.hardware.typedef.instances;
 
-import org.darbots.corebotlib.standardization.hardware.typedef.annotations.MotorType;
-
-import java.lang.annotation.Annotation;
+import org.darbots.corebotlib.hardware.typedef.annotations.MotorType;
 
 public class MotorTypeInstance {
     private String name;
@@ -67,5 +65,8 @@ public class MotorTypeInstance {
     }
     public void setMaximumRPM(double maxRPM){
         this.maximumRPM = maxRPM;
+    }
+    public double getTheoreticalMaxTPS(EncoderTypeInstance encoderType){
+        return this.getMaximumRPM() / 60.0 * encoderType.getTicksPerRev();
     }
 }
