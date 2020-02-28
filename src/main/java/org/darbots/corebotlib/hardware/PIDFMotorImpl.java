@@ -10,7 +10,7 @@ import org.darbots.corebotlib.hardware.typedef.instances.MotorTypeInstance;
 public class PIDFMotorImpl implements PIDFMotor, AsyncDevice {
     public SimpleMotor motor;
     public Encoder encoder;
-    private int targetPosition = 0;
+    private long targetPosition = 0;
     private RunMode currentRunMode = RunMode.NO_PIDF_WITH_SPEED;
     private double currentPower = 0.0;
     private PIDFController SpeedPIDFController = new PIDFController(new PIDFCoefficients());
@@ -31,12 +31,12 @@ public class PIDFMotorImpl implements PIDFMotor, AsyncDevice {
         this.errorToleranceTicks = motorImpl.errorToleranceTicks;
     }
     @Override
-    public int getTargetPositionTick() {
+    public long getTargetPositionTick() {
         return this.targetPosition;
     }
 
     @Override
-    public void setTargetPositionTick(int targetPositionTick) {
+    public void setTargetPositionTick(long targetPositionTick) {
         this.targetPosition = targetPositionTick;
     }
 
@@ -103,7 +103,7 @@ public class PIDFMotorImpl implements PIDFMotor, AsyncDevice {
     }
 
     @Override
-    public int getCurrentTick() {
+    public long getCurrentTick() {
         if(this.encoder == null){
             return 0;
         }else{
@@ -198,6 +198,12 @@ public class PIDFMotorImpl implements PIDFMotor, AsyncDevice {
 
     @Override
     public void update() {
+        if(this.motor instanceof AsyncDevice){
+            ((AsyncDevice) this.motor).update();
+        }
+        if(this.encoder instanceof AsyncDevice){
+            ((AsyncDevice) this.encoder).update();
+        }
         if(!this.isBusy()){
             this.stop();
         }
@@ -239,7 +245,7 @@ public class PIDFMotorImpl implements PIDFMotor, AsyncDevice {
         this.motor.setPower(pidfPower);
     }
 
-    protected void applyPIDFToPosition(int currentPosition, int targetPosition, double currentTPS, double maxTPS, double power){
+    protected void applyPIDFToPosition(long currentPosition, long targetPosition, double currentTPS, double maxTPS, double power){
         if(this.motor == null){
             return;
         }

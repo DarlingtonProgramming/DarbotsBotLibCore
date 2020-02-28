@@ -8,8 +8,8 @@ public interface PIDFMotor extends SimpleMotor, Encoder {
         PIDF_WITH_SPEED,
         NO_PIDF_WITH_SPEED
     }
-    int getTargetPositionTick();
-    void setTargetPositionTick(int targetPositionTick);
+    long getTargetPositionTick();
+    void setTargetPositionTick(long targetPositionTick);
     RunMode getCurrentRunMode();
     void setCurrentRunMode(RunMode mode);
     PIDFCoefficients getSpeedPIDFCoefficients();

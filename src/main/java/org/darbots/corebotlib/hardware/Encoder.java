@@ -5,7 +5,7 @@ import org.darbots.corebotlib.hardware.typedef.instances.EncoderTypeInstance;
 
 public interface Encoder {
     EncoderTypeInstance getEncoderType();
-    int getCurrentTick();
+    long getCurrentTick();
     Angle getCurrentAngularSpeed();
     double getCurrentTicksPerSecond();
     boolean isDirectionReversed();
