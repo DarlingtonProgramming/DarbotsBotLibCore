@@ -85,9 +85,9 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
         return (ticks - encoderTickAtZeroPos) / motor.getEncoderType().getTicksPerRev();
     }
 
-
     @Override
     public void setTargetPosition(double targetPosition) {
+        targetPosition = Range.clip(targetPosition,this.minimumPosition,this.maximumPosition);
         this.motor.setTargetPositionTick(this.targetPositionToTicks(targetPosition));
         this.targetPosition = targetPosition;
         this.lastIsBusy = true;
