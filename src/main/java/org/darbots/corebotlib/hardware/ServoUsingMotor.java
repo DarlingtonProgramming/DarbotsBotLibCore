@@ -11,9 +11,11 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
     private double targetPower;
     private double maximumPosition;
     private double minimumPosition;
+    public Servo.ServoPositionReachedCallback positionReachedCallback = null;
+    private boolean lastIsBusy = false;
 
     public ServoUsingMotor(PIDFMotor motor, double targetPower, double minPosition, double maxPosition, double initialPosition){
-        this.motor = motor;
+        this.setMotor(motor);
         this.motor.setCurrentRunMode(PIDFMotor.RunMode.PIDF_TO_POSITION);
         this.setTargetPower(targetPower);
         this.minimumPosition = minPosition;
@@ -23,7 +25,7 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
     }
 
     public ServoUsingMotor(ServoUsingMotor servoUsingMotor){
-        this.motor = servoUsingMotor.motor;
+        this.setMotor(servoUsingMotor.motor);
         this.targetPosition = servoUsingMotor.targetPosition;
         this.encoderTickAtZeroPos = servoUsingMotor.encoderTickAtZeroPos;
         this.targetPower = servoUsingMotor.targetPower;
@@ -43,6 +45,11 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
         return this.motor;
     }
 
+    public void setMotor(PIDFMotor motor){
+        this.motor = motor;
+        this.lastIsBusy = motor.isBusy();
+    }
+
     public double getTargetPower(){
         return this.targetPower;
     }
@@ -50,6 +57,13 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
     public void setTargetPower(double power){
         this.targetPower = Range.clip(Math.abs(power),0.0,1.0);
         this.motor.setPower(this.targetPower);
+    }
+
+    public double getCurrentPosition(){
+        long currentEncoderCount = this.motor.getCurrentTick();
+        long deltaEncoderCount = currentEncoderCount - this.encoderTickAtZeroPos;
+        double currentPosition = deltaEncoderCount / this.motor.getEncoderType().getTicksPerRev();
+        return currentPosition;
     }
 
     @Override
@@ -76,6 +90,7 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
     public void setTargetPosition(double targetPosition) {
         this.motor.setTargetPositionTick(this.targetPositionToTicks(targetPosition));
         this.targetPosition = targetPosition;
+        this.lastIsBusy = true;
     }
 
     public void setTargetPosition(double targetPosition, double targetPower){
@@ -126,6 +141,16 @@ public class ServoUsingMotor implements Servo, AsyncDevice {
     public void update() {
         if(motor instanceof AsyncDevice){
             ((AsyncDevice) motor).update();
+        }
+        {
+            boolean currentIsBusy = this.motor.isBusy();
+            if (lastIsBusy && (!currentIsBusy)) {
+                if (this.positionReachedCallback != null) {
+                    this.positionReachedCallback.positionReached(this, this.targetPosition, this.getCurrentPosition());
+                    this.positionReachedCallback = null;
+                }
+            }
+            lastIsBusy = currentIsBusy;
         }
     }
 }
