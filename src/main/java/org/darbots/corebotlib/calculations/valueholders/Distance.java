@@ -35,23 +35,6 @@ public class Distance implements Serializable,Cloneable {
     public Distance clone(){
         return new Distance(this);
     }
-    private void writeObject(java.io.ObjectOutputStream out)
-            throws IOException{
-        DistanceUnit unit = this.getDistanceUnit();
-        double distCM = unit.toDistanceUnit(DistanceUnit.CM,this.distance);
-        out.writeDouble(distCM);
-    }
-    private void readObject(java.io.ObjectInputStream in)
-            throws IOException, ClassNotFoundException{
-        double distCM = in.readDouble();
-        this.distanceUnit = DistanceUnit.CM;
-        this.distance = distCM;
-    }
-    private void readObjectNoData()
-            throws ObjectStreamException {
-        this.distance = 0;
-        this.distanceUnit = DistanceUnit.CM;
-    }
     public double asUnit(DistanceUnit distanceUnit){
         return distanceUnit.fromDistanceUnit(this.getDistanceUnit(),this.distance);
     }
@@ -72,5 +55,22 @@ public class Distance implements Serializable,Cloneable {
     }
     public boolean equals(Distance distance){
         return this.asCM() == distance.asCM();
+    }
+    private void writeObject(java.io.ObjectOutputStream out)
+            throws IOException{
+        DistanceUnit unit = this.getDistanceUnit();
+        double distCM = unit.toDistanceUnit(DistanceUnit.CM,this.distance);
+        out.writeDouble(distCM);
+    }
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException{
+        double distCM = in.readDouble();
+        this.distanceUnit = DistanceUnit.CM;
+        this.distance = distCM;
+    }
+    private void readObjectNoData()
+            throws ObjectStreamException {
+        this.distance = 0;
+        this.distanceUnit = DistanceUnit.CM;
     }
 }

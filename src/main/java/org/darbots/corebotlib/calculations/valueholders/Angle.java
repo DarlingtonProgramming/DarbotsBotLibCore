@@ -40,25 +40,8 @@ public class Angle implements Serializable,Cloneable {
     public Angle clone(){
         return new Angle(this);
     }
-    private void writeObject(java.io.ObjectOutputStream out)
-            throws IOException {
-        AngleUnit unit = this.getAngleUnit();
-        double angleRad = unit.toAngleUnit(AngleUnit.RADIAN,this.angle);
-        out.writeDouble(angleRad);
-    }
-    private void readObject(java.io.ObjectInputStream in)
-            throws IOException, ClassNotFoundException{
-        double angleRad = in.readDouble();
-        this.angleUnit = AngleUnit.RADIAN;
-        this.angle = angleRad;
-    }
     public Angle negative(){
         return new Angle(-this.angle,this.getAngleUnit());
-    }
-    private void readObjectNoData()
-            throws ObjectStreamException {
-        this.angle = 0;
-        this.angleUnit = AngleUnit.RADIAN;
     }
     public double asRadian(){
         return this.asUnit(AngleUnit.RADIAN);
@@ -122,5 +105,22 @@ public class Angle implements Serializable,Cloneable {
     public NormalizedAngle getSquaredAngle(){
         AngleUnit currentAngleUnit = this.getAngleUnit();
         return new NormalizedAngle(currentAngleUnit.toSquareAngle(currentAngleUnit.normalize(this.angle)),currentAngleUnit);
+    }
+    private void writeObject(java.io.ObjectOutputStream out)
+            throws IOException {
+        AngleUnit unit = this.getAngleUnit();
+        double angleRad = unit.toAngleUnit(AngleUnit.RADIAN,this.angle);
+        out.writeDouble(angleRad);
+    }
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException{
+        double angleRad = in.readDouble();
+        this.angleUnit = AngleUnit.RADIAN;
+        this.angle = angleRad;
+    }
+    private void readObjectNoData()
+            throws ObjectStreamException {
+        this.angle = 0;
+        this.angleUnit = AngleUnit.RADIAN;
     }
 }
